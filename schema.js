@@ -67,6 +67,59 @@ const lineType = new GraphQLObjectType({
 
 const linesType = new GraphQLList(lineType);
 
+const arrivalType = new GraphQLObjectType({
+  name: 'Arrival',
+  description: 'arrival of train',
+  fields: () => ({
+    currentLocation: {
+      type: GraphQLString,
+    },
+    destinationName: {
+      type: GraphQLString,
+    },
+    destinationNaptanId: {
+      type: GraphQLString,
+    },
+    expectedArrival: {
+      type: GraphQLString,
+    },
+    lineId: {
+      type: GraphQLString,
+    },
+    lineName: {
+      type: GraphQLString,
+    },
+    modeName: {
+      type: GraphQLString,
+    },
+    naptanId: {
+      type: GraphQLString,
+    },
+    platformName: {
+      type: GraphQLString,
+    },
+    stationName: {
+      type: GraphQLString,
+    },
+    timeToLive: {
+      type: GraphQLString,
+    },
+    timeToStation: {
+      type: GraphQLString,
+    },
+    timestamp: {
+      type: GraphQLString,
+    },
+    towards: {
+      type: GraphQLString,
+    },
+    vehicleId: {
+      type: GraphQLString,
+    }
+  })
+});
+
+
 const rootQuery = new GraphQLObjectType({
   name: 'RootQuery',
   fields: () => ({
@@ -74,6 +127,10 @@ const rootQuery = new GraphQLObjectType({
       type: linesType,
       description: 'Gets all Tube lines',
       resolve: () => api.fetchLines(),
+    },
+    arrivals: {
+      type: new GraphQLList(arrivalType),
+      resolve: (source, {line}) => api.fetchStations(line),
     }
   })
 });
