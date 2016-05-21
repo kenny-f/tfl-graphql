@@ -10,8 +10,8 @@ export function fetchLineStatusApi(line) {
     .then(json => json);
 }
 
-export function fetchArrivals(stationCode) {
-  return fetch(`${baseUrl}/Line/central/Arrivals?stopPointId=940GZZLU${stationCode}&app_id=${appId}&app_key=${appKey}`) // eslint-disable-line max-len
+export function fetchArrivals(line, stationCode) {
+  return fetch(`${baseUrl}/Line/${line}/Arrivals?stopPointId=940GZZLU${stationCode}&app_id=${appId}&app_key=${appKey}`) // eslint-disable-line max-len
     .then(response => response.json())
     .then(json => json);
 }
