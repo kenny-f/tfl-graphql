@@ -12,6 +12,12 @@ export default new GraphQLObjectType({
   name: 'LineStatus',
   description: 'Status of a Line',
   fields: () => ({
+    type: {
+      type: GraphQLString,
+      resolve(obj) {
+        return obj.$type;
+      },
+    },
     id: { type: GraphQLInt, },
     lineId: { type: GraphQLString, },
     statusSeverity: { type: GraphQLString, },

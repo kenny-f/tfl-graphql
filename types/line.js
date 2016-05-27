@@ -12,6 +12,7 @@ import {
   GraphQLBoolean,
 } from 'graphql';
 
+import lineServiceTypeInfo from './lineServiceTypeInfo';
 import disruptionType from './disruption';
 import stationType from './station';
 import * as api from '../api';
@@ -29,9 +30,12 @@ export default new GraphQLObjectType({
     id: { type: GraphQLString, },
     name: { type: GraphQLString, },
     modeName: { type: GraphQLString, },
-    disruptions: { type: disruptionType, },
+    disruptions: { type: new GraphQLList(disruptionType), },
     created: { type: GraphQLString, },
     modified: { type: GraphQLString, },
+    lineStatuses: { type: new GraphQLList(lineStatusType), },
+    routeSections: {},
+    serviceTypes: { type: new GraphQLList(lineServiceTypeInfo) },
     stations: {
       type: new GraphQLList(stationType),
       description: 'stations of the line',
