@@ -4,10 +4,10 @@ const baseUrl = 'https://api.tfl.gov.uk';
 const appId = process.env.APP_ID;
 const appKey = process.env.APP_KEY;
 
-export function fetchLineStatusApi(line) {
+export function fetchLineStatus(line) {
   return fetch(`${baseUrl}/Line/${line}/Status?app_id=${appId}&app_key=${appKey}`)
     .then(response => response.json())
-    .then(json => json);
+    .then(json => json[0].lineStatuses)
 }
 
 export function fetchArrivals(line, stationCode) {

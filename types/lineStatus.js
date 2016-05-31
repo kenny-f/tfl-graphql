@@ -18,7 +18,7 @@ export default new GraphQLObjectType({
         return obj.$type;
       },
     },
-    id: { type: GraphQLInt, },
+    id: { type: GraphQLString, },
     lineId: { type: GraphQLString, },
     statusSeverity: { type: GraphQLString, },
     statusSeverityDescription: { type: GraphQLString, },
@@ -26,5 +26,5 @@ export default new GraphQLObjectType({
     created: { type: GraphQLString, },
     validityPeriods: { type: new GraphQLList(validityPeriodType), },
     disruption: { type: disruptionType, },
-  })
+  }),
 });
