@@ -15,8 +15,6 @@ import {
 import * as api from './api';
 import * as types from './types';
 
-const stationsType = new GraphQLList(types.stationType);
-
 const linesType = new GraphQLList(types.lineType);
 
 const rootQuery = new GraphQLObjectType({
